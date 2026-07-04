@@ -4,11 +4,11 @@ from unittest.mock import patch, MagicMock
 from src.llm_explainer import MedicalLLMExplainer
 
 def test_llm_initialization_no_key():
-    """Valida se o motor da interface previne acesso sem autenticação Groq API via ValueErrors."""
-    # Garante que a chave não exista localmente durante o mock
+    """Valida se a ausência de chave de autenticação ativa o fallback (mock_mode)."""
     with patch.dict(os.environ, {'GROQ_API_KEY': ''}, clear=True):
-        with pytest.raises(ValueError, match="Por favor, configure a variável de ambiente GROQ_API_KEY"):
-            MedicalLLMExplainer(api_key=None)
+        explainer = MedicalLLMExplainer(api_key=None)
+        assert explainer.mock_mode is True
+        assert explainer.client is None
 
 @patch('src.llm_explainer.Groq')
 def test_llm_generate_explanation_success(mock_groq_class, tmp_path):
