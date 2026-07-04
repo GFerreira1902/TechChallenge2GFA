@@ -14,14 +14,14 @@ def test_llm_initialization_no_key():
 def test_llm_generate_explanation_success(mock_groq_class, tmp_path):
     """Garante que a construção do laudo humanizado retorna perfeitamente os inputs do LLaMA."""
     
-    # Mockando a resposta estática do Model Complection
+    # Mock da resposta estática do Model Complection
     mock_client = MagicMock()
     mock_response = MagicMock()
     mock_response.message.content = "Achado compatível com morfologia normal. Próximos passos sugeridos..."
     mock_client.chat.completions.create.return_value.choices = [mock_response]
     mock_groq_class.return_value = mock_client
     
-    # Criamos um local temporário para não sujar os relatórios verdadeiros
+    # Criação de um local temporário para não sujar os relatórios verdadeiros
     history_file = tmp_path / "mock_history.json"
     
     explainer = MedicalLLMExplainer(api_key="mock_key", history_path=str(history_file))
@@ -33,4 +33,4 @@ def test_llm_generate_explanation_success(mock_groq_class, tmp_path):
     )
     
     assert "compatível com morfologia normal" in resposta
-    assert os.path.exists(str(history_file)), "O log do painel semântico não foi guardado corretamente."
+    assert os.path.exists(str(history_file)), "O log do painel não foi guardado corretamente."

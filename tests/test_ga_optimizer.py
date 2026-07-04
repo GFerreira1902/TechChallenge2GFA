@@ -12,7 +12,7 @@ def mock_data():
     return X_train, y_train
 
 def test_ga_initialization(mock_data):
-    """Testa se a inicialização do Otimizador é capaz de gerar as structs corretas."""
+    """Valida se a inicialização do otimizador define corretamente os atributos da classe."""
     X_train, y_train = mock_data
     ga = GeneticAlgorithmOptimizer(X_train, y_train, population_size=4, generations=2)
     
@@ -21,7 +21,7 @@ def test_ga_initialization(mock_data):
     assert len(ga.param_grid.keys()) == 4
 
 def test_generate_population(mock_data):
-    """Verifica se a população de parâmetros gerados aleatoriamente possui a tipagem apropriada."""
+    """Verifica se a população de parâmetros gerada aleatoriamente possui as chaves apropriadas."""
     X_train, y_train = mock_data
     ga = GeneticAlgorithmOptimizer(X_train, y_train, population_size=5)
     
@@ -35,7 +35,7 @@ def test_generate_population(mock_data):
         assert 'class_weight' in individual
 
 def test_crossover(mock_data):
-    """Valida se o evento de reprodução (crossover) transfere validamente os genomas de dois pais."""
+    """Valida se o evento de crossover mistura corretamente os hiperparâmetros de dois indivíduos."""
     X_train, y_train = mock_data
     ga = GeneticAlgorithmOptimizer(X_train, y_train)
     
@@ -47,6 +47,6 @@ def test_crossover(mock_data):
     assert list(child1.keys()) == list(parent1.keys())
     assert list(child2.keys()) == list(parent2.keys())
     
-    # As subcamadas (n_estimators, etc) devem descender de um dos dois
+    # Os atributos dos filhos devem vir de um dos dois pais
     assert child1['n_estimators'] in [50, 300]
     assert child2['class_weight'] in [None, 'balanced']
