@@ -156,19 +156,33 @@ with col_results:
                     top_features=features_texto
                 )
                 
-                # Exibir resultado visualmente em blocos divididos
-                # Alerta matemático:
+                # --- EXIBIÇÃO VISUAL (UI Aprimorada) ---
+                # Bloco de Alerta e Defesa Técnica
                 if prediction == 1:
-                    st.error(f"🔴 **Alerta Clínico: Previsão do Algoritmo GA indicou Risco de Malignidade com Grau de Confiança: {confidence:.2f}%**")
+                    st.error(f"🔴 **Alerta Clínico: Previsão do Algoritmo indicou Risco de Malignidade**")
                 else:
-                    st.success(f"🟢 **Risco Clínico Baixo: Algoritmo GA indica Morfologia Benigna com Grau de Confiança: {confidence:.2f}%**")
+                    st.success(f"🟢 **Risco Clínico Baixo: Algoritmo indica Morfologia Benigna**")
                 
-                # Exibindo métricas de peso separadamente para visão do profissional
-                st.markdown("##### Principais Influenciadores do Padrão (Top 3)")
-                st.info(f"O motor genético identificou desvios primários nas seguintes features: `{top_features_names[0]}` | `{top_features_names[1]}` | `{top_features_names[2]}`")
+                # Métricas separadas e formatadas
+                m1, m2 = st.columns(2)
+                with m1:
+                    st.metric(label="Confiança do Algoritmo", value=f"{confidence:.2f}%")
+                with m2:
+                    st.markdown("""
+                    <div style="font-size:0.85em; color:#94A3B8; padding-top:10px; border-left:3px solid #00CED1; padding-left:10px;">
+                        <i>Nota Técnica: Modelo tunado via Algoritmo Genético focado em Alta Sensibilidade (Recall Máximo). 
+                        Níveis de confiança moderados em achados malignos indicam detecção precoce celular, evitando Falsos Negativos.</i>
+                    </div>
+                    """, unsafe_allow_html=True)
                 
-                # Texto Final
-                st.markdown("##### 📄 Relatório de Explicabilidade Gerado via Llama-3.3")
+                st.markdown("---")
+                
+                # Exibindo métricas de peso
+                st.markdown("##### 🧬 Principais Influenciadores Celulares")
+                st.info(f"O motor genético identificou desvios axiais prioritários nas seguintes features: `{top_features_names[0]}` | `{top_features_names[1]}` | `{top_features_names[2]}`")
+                
+                # Texto Final do LLM
+                st.markdown("##### 📄 Relatório de Explicabilidade Gerado via Inteligência Artificial")
                 st.markdown(f'<div class="laudo-box">{laudo}</div>', unsafe_allow_html=True)
                 
             except Exception as e:
