@@ -76,7 +76,7 @@ load_dotenv()
 @st.cache_resource
 def load_assets():
     model = joblib.load('outputs/models/best_rf_model_ga.pkl')
-    scaler = joblib.load('outputs/models/scaler_logistico_final.pkl')
+    scaler = joblib.load('outputs/models/scaler_final.pkl')
     
     # Carregando uma amostra do dataset real para pegar o nome das features
     X_train_raw = pd.read_csv('data/processed/X_train_raw.csv')
