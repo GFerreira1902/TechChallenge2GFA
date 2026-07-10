@@ -4,7 +4,7 @@
 
 ## Visão Geral do Projeto
 
-Este projeto apresenta um sistema avançado de diagnóstico de rastreio de câncer de mama pautado em otimização bio-inspirada. A arquitetura foi construída com a introdução de **Algoritmos Genéticos** para otimização de hiperparâmetros de um modelo preditivo (_Random Forest_), e a integração de **IA Generativa (LLM)** para traduzir outputs matemáticos complexos em laudos médicos humanizados e explicáveis.
+Este projeto representa a evolução do sistema de diagnóstico de rastreio de câncer de mama que executei na fase 1 do tech challenge. Agora na Fase 2, a arquitetura foi melhorada com a introdução de **Algoritmos Genéticos** para otimização de hiperparâmetros de um modelo preditivo (_Random Forest_), e a integração de **IA Generativa (LLM)** para traduzir outputs matemáticos complexos em laudos médicos humanizados e explicáveis.
 
 O objetivo clínico do modelo otimizado foi maximizar a métrica de **Recall (Sensibilidade)**, garantindo a minimização de casos Falsos Negativos, que representam o maior risco, ainda mais quando falamos sobre o câncer.
 
