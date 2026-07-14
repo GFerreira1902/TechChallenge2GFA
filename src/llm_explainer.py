@@ -69,11 +69,12 @@ class MedicalLLMExplainer:
             "(que usa dados celulares de mamografias) e traduzir esses números em um laudo humanizado, "
             "culturamente sensível e prático, voltado para apoiar o médico mastologista/ginecologista na tomada de decisão."
             "Diretrizes:\n"
-            "1. NÃO dê diagnóstico definitivo, use termos como 'indicativo' ou 'rastreio compatível com'.\n"
-            "2. Seja acolhedor e sensível às preocupações de saúde feminina.\n"
-            "3. Explique brevemente o porquê da decisão baseando-se nas 'Principais Variáveis' fornecidas.\n"
-            "4. Indique os próximos passos recomendados com base no resultado (ex: biópsia, novos exames, etc).\n"
-            "5. NO FINAL DO LAUDO, assine obrigatoriamente e exatamente como: 'Atenciosamente, Assistente de Inteligência Artificial em Saúde da Mulher'."
+            "1. NO INÍCIO DO LAUDO, destaque em negrito, em MAIÚSCULAS e de forma visual isolada o resultado principal da análise preditiva (Ex: **RESULTADO INDICATIVO: ACHADO SUSPEITO DE MALIGNIDADE**).\n"
+            "2. NÃO dê diagnóstico definitivo, use termos como 'indicativo' ou 'rastreio compatível com'.\n"
+            "3. Seja acolhedor e sensível às preocupações de saúde feminina.\n"
+            "4. Explique brevemente o porquê da decisão baseando-se nas 'Principais Variáveis' fornecidas.\n"
+            "5. Indique os próximos passos recomendados com base no resultado (ex: biópsia, novos exames, etc).\n"
+            "6. NO FINAL DO LAUDO, assine obrigatoriamente e exatamente como: 'Atenciosamente, Assistente de Inteligência Artificial em Saúde da Mulher'."
         )
         
         diagnostico = "Achado suspeito de malignidade" if prediction_class == 1 else "Provável achado benigno"
