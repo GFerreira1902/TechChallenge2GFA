@@ -97,7 +97,7 @@ st.divider()
 col_form, spacer, col_results = st.columns([0.8, 0.1, 2])
 
 with col_form:
-    st.markdown("### 📥 Entrada de Biometria")
+    st.markdown("### 📥 Análise Clínica")
     st.caption("Insira manualmente as 5 métricas primárias isoladas ou carregue os meta-dados do equipamento.")
 
     
