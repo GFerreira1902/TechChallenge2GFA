@@ -66,3 +66,6 @@ _gerar_pdf.py
 
 # Secrets
 .env
+
+#Anexos da Entrega
+LinksEntrega.txt
